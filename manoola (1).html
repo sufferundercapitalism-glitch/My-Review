@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Review of Manoola — A Phenomenon Poorly Understood by Science</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Lora:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --rose: #C2185B;
+    --rose-light: #F8BBD9;
+    --rose-deep: #880E4F;
+    --gold: #B8860B;
+    --gold-light: #FFF8DC;
+    --gold-warm: #FFD700;
+    --teal: #00695C;
+    --teal-light: #E0F2F1;
+    --purple: #6A1B9A;
+    --purple-light: #EDE7F6;
+    --amber: #E65100;
+    --amber-light: #FFF3E0;
+    --ink: #1a1a2e;
+    --body: #2d2d44;
+    --muted: #6b6b8a;
+    --cream: #FDFAF5;
+    --parchment: #F5EFE0;
+    --white: #ffffff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Lora', Georgia, serif;
+    background: var(--cream);
+    color: var(--body);
+    line-height: 1.85;
+    font-size: 18px;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    background: var(--ink);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    padding: 4rem 2rem;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 30%, rgba(194, 24, 91, 0.25) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 70%, rgba(106, 27, 154, 0.20) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 50% 10%, rgba(184, 134, 11, 0.15) 0%, transparent 50%);
+  }
+
+  .hero-stars {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 10% 15%, rgba(255,215,0,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 45% 10%, rgba(255,215,0,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 65% 25%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 80% 8%, rgba(255,215,0,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 90% 35%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 15% 60%, rgba(255,215,0,0.3) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 55% 55%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 35% 75%, rgba(255,215,0,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 75% 65%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 5% 85%, rgba(255,215,0,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 95% 80%, rgba(255,255,255,0.4) 0%, transparent 100%);
+  }
+
+  .hero-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-warm);
+    margin-bottom: 2rem;
+    position: relative;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.05;
+    position: relative;
+    max-width: 900px;
+  }
+
+  .hero h1 em {
+    color: var(--rose-light);
+    font-style: italic;
+  }
+
+  .hero-subtitle {
+    font-family: 'Lora', serif;
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    font-style: italic;
+    color: rgba(255,255,255,0.65);
+    max-width: 600px;
+    margin: 1.5rem auto 0;
+    position: relative;
+  }
+
+  .hero-ornament {
+    font-size: 1.8rem;
+    color: var(--gold-warm);
+    margin: 2rem 0;
+    position: relative;
+    letter-spacing: 0.3em;
+  }
+
+  .hero-arabic {
+    font-family: 'Traditional Arabic', 'Scheherazade New', serif;
+    font-size: clamp(1.1rem, 3vw, 1.6rem);
+    color: rgba(255,255,255,0.8);
+    direction: rtl;
+    position: relative;
+    max-width: 650px;
+    line-height: 2;
+    margin: 0 auto;
+  }
+
+  .hero-arabic-trans {
+    font-family: 'Lora', serif;
+    font-size: 0.85rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.45);
+    margin-top: 0.5rem;
+    position: relative;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.35);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.3), transparent);
+  }
+
+  /* ── ARTICLE WRAPPER ── */
+  .article {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 1.5rem 6rem;
+  }
+
+  /* ── CHAPTER NAV ── */
+  .chapter-nav {
+    background: var(--ink);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .chapter-nav-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 0.75rem;
+  }
+
+  .chapter-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: center;
+  }
+
+  .chapter-links a {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    padding: 4px 10px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    transition: all 0.2s;
+  }
+
+  .chapter-links a:hover {
+    color: var(--gold-warm);
+    border-color: var(--gold-warm);
+  }
+
+  /* ── CHAPTER HEADERS ── */
+  .chapter {
+    padding-top: 5rem;
+  }
+
+  .chapter-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .chapter h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+  }
+
+  .chapter-subtitle {
+    font-family: 'Lora', serif;
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--muted);
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+  }
+
+  /* ── CHAPTER ACCENT COLORS ── */
+  .ch-rose .chapter-num { color: var(--rose); }
+  .ch-rose h2 { color: var(--rose-deep); }
+  .ch-rose .chapter-subtitle { border-color: var(--rose-light); }
+
+  .ch-teal .chapter-num { color: var(--teal); }
+  .ch-teal h2 { color: var(--teal); }
+  .ch-teal .chapter-subtitle { border-color: var(--teal-light); }
+
+  .ch-purple .chapter-num { color: var(--purple); }
+  .ch-purple h2 { color: var(--purple); }
+  .ch-purple .chapter-subtitle { border-color: var(--purple-light); }
+
+  .ch-amber .chapter-num { color: var(--amber); }
+  .ch-amber h2 { color: var(--amber); }
+  .ch-amber .chapter-subtitle { border-color: var(--amber-light); }
+
+  .ch-gold .chapter-num { color: var(--gold); }
+  .ch-gold h2 { color: var(--gold); }
+
+  /* ── PROSE ── */
+  p {
+    margin-bottom: 1.4rem;
+    color: var(--body);
+  }
+
+  p:first-of-type::first-letter {
+    font-family: 'Playfair Display', serif;
+    font-size: 4.5rem;
+    font-weight: 700;
+    float: left;
+    line-height: 0.75;
+    padding-right: 0.12em;
+    padding-top: 0.08em;
+    color: var(--rose);
+  }
+
+  .no-dropcap::first-letter { all: unset; }
+
+  /* ── PULLQUOTE ── */
+  .pullquote {
+    margin: 3rem -2rem;
+    padding: 2.5rem 2rem;
+    position: relative;
+  }
+
+  .pullquote::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    border-radius: 4px;
+  }
+
+  .pullquote.rose::before { background: var(--rose); }
+  .pullquote.teal::before { background: var(--teal); }
+  .pullquote.purple::before { background: var(--purple); }
+  .pullquote.gold::before { background: var(--gold); }
+  .pullquote.amber::before { background: var(--amber); }
+
+  .pullquote-text {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.25rem, 3vw, 1.65rem);
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink);
+    margin-bottom: 0;
+  }
+
+  .pullquote-text::first-letter { all: unset; }
+
+  /* ── ARABIC BLOCK ── */
+  .arabic-block {
+    background: var(--ink);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    margin: 3rem 0;
+    text-align: right;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .arabic-block::before {
+    content: '"';
+    position: absolute;
+    top: -1rem;
+    right: 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 8rem;
+    color: rgba(255,215,0,0.08);
+    line-height: 1;
+  }
+
+  .arabic-block .arabic-text {
+    font-family: 'Traditional Arabic', 'Scheherazade New', serif;
+    font-size: clamp(1.2rem, 3vw, 1.7rem);
+    color: var(--gold-warm);
+    line-height: 2;
+    direction: rtl;
+    display: block;
+    position: relative;
+    margin-bottom: 0;
+  }
+
+  .arabic-block .arabic-text::first-letter { all: unset; }
+
+  .arabic-block .translation {
+    font-family: 'Lora', serif;
+    font-size: 0.88rem;
+    font-style: italic;
+    color: rgba(255,255,255,0.5);
+    margin-top: 1rem;
+    text-align: left;
+    direction: ltr;
+    display: block;
+    margin-bottom: 0;
+  }
+
+  .arabic-block .translation::first-letter { all: unset; }
+
+  /* ── SARCASTIC NOTE ── */
+  .sarcastic {
+    background: var(--parchment);
+    border: 1px dashed rgba(0,0,0,0.12);
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+    position: relative;
+  }
+
+  .sarcastic::before {
+    content: 'Editor's note';
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .sarcastic p {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--muted);
+    margin-bottom: 0;
+  }
+
+  .sarcastic p::first-letter { all: unset; }
+
+  /* ── POETIC LINES ── */
+  .poetic {
+    text-align: center;
+    padding: 2.5rem 1rem;
+    margin: 2rem 0;
+  }
+
+  .poetic-line {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    color: var(--muted);
+    line-height: 2;
+    display: block;
+    margin-bottom: 0;
+  }
+
+  .poetic-line::first-letter { all: unset; }
+
+  /* ── ORNAMENT ── */
+  .ornament {
+    text-align: center;
+    font-size: 1.4rem;
+    color: var(--gold);
+    letter-spacing: 0.4em;
+    margin: 3.5rem 0;
+    opacity: 0.7;
+  }
+
+  /* ── COLOR CARDS (chapter intros) ── */
+  .color-card {
+    border-radius: 20px;
+    padding: 3rem 2.5rem;
+    margin: 4rem 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .color-card.rose-card {
+    background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%);
+  }
+
+  .color-card.teal-card {
+    background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
+  }
+
+  .color-card.purple-card {
+    background: linear-gradient(135deg, #ede7f6 0%, #d1c4e9 100%);
+  }
+
+  .color-card.amber-card {
+    background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+  }
+
+  .color-card.navy-card {
+    background: linear(135deg, #1a1a2e 0%, #16213e 100%);
+    background: #1a1a2e;
+  }
+
+  .color-card h2 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 0.25rem;
+  }
+
+  /* ── FINAL VERDICT ── */
+  .verdict {
+    background: var(--ink);
+    border-radius: 24px;
+    padding: 4rem 3rem;
+    margin: 5rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .verdict::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 20% 50%, rgba(194,24,91,0.2) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 80% 50%, rgba(106,27,154,0.2) 0%, transparent 60%);
+  }
+
+  .verdict-stars {
+    font-size: 2.5rem;
+    letter-spacing: 0.2em;
+    color: var(--gold-warm);
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  .verdict h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    color: #ffffff;
+    position: relative;
+    margin-bottom: 1rem;
+  }
+
+  .verdict-text {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.65);
+    max-width: 550px;
+    margin: 0 auto;
+    position: relative;
+    line-height: 1.7;
+  }
+
+  .verdict-text::first-letter { all: unset; }
+
+  .verdict-closing {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.4);
+    margin-top: 2.5rem;
+    letter-spacing: 0.05em;
+    line-height: 2;
+    position: relative;
+  }
+
+  .verdict-closing::first-letter { all: unset; }
+
+  /* ── RATING BADGE ── */
+  .rating-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,215,0,0.12);
+    border: 1px solid rgba(255,215,0,0.3);
+    border-radius: 50px;
+    padding: 0.6rem 1.5rem;
+    margin: 2rem 0;
+    position: relative;
+  }
+
+  .rating-badge span {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold-warm);
+  }
+
+  /* ── DIVIDER ── */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 4rem 0;
+  }
+
+  .section-divider::before, .section-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent);
+  }
+
+  .section-divider-icon {
+    font-size: 1.2rem;
+    color: var(--gold);
+    opacity: 0.6;
+  }
+
+  /* ── COLOR STRIPS ── */
+  .strip {
+    height: 4px;
+    border-radius: 4px;
+    margin: 0 0 3rem;
+    background: linear-gradient(90deg, var(--rose), var(--purple), var(--teal), var(--gold));
+  }
+
+  /* ── HIGHLIGHT TEXT ── */
+  .highlight {
+    background: linear-gradient(120deg, var(--rose-light) 0%, var(--rose-light) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.3em;
+    background-position: 0 88%;
+    padding: 0 2px;
+  }
+
+  .highlight-teal {
+    background: linear-gradient(120deg, var(--teal-light) 0%, var(--teal-light) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.3em;
+    background-position: 0 88%;
+    padding: 0 2px;
+  }
+
+  .highlight-purple {
+    background: linear-gradient(120deg, var(--purple-light) 0%, var(--purple-light) 100%);
+    background-repeat: no-repeat;
+    background-size: 100% 0.3em;
+    background-position: 0 88%;
+    padding: 0 2px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--ink);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+
+  footer p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 0.3rem;
+  }
+
+  footer p::first-letter { all: unset; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 600px) {
+    .pullquote { margin: 2rem 0; }
+    .color-card { padding: 2rem 1.5rem; }
+    .verdict { padding: 2.5rem 1.5rem; }
+    p:first-of-type::first-letter { font-size: 3.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-stars"></div>
+
+  <div class="hero-tag">A Personal Review &nbsp;·&nbsp; Published with Love &nbsp;·&nbsp; And Some Embarrassment</div>
+
+  <h1>A Review of <em>Manoola</em></h1>
+
+  <div class="hero-ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+
+  <p class="hero-subtitle">A Phenomenon Poorly Understood by Science, Perfectly Felt by the Heart</p>
+
+  <div style="margin-top: 2.5rem;">
+    <div class="hero-arabic">وَكَانَتْ كَالنُّجُومِ — بَعِيدَةٌ حِينَ نَظَرْتُ، وَقَرِيبَةٌ حِينَ أَحْبَبْتُ</div>
+    <div class="hero-arabic-trans">"She was like the stars — distant when I merely looked, close when I truly loved."</div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>Read on</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- STICKY NAV -->
+<nav class="chapter-nav" aria-label="Chapters">
+  <div class="chapter-nav-label">Chapters</div>
+  <div class="chapter-links">
+    <a href="#ch1">I. Preface</a>
+    <a href="#ch2">II. Origins</a>
+    <a href="#ch3">III. Her Eyes</a>
+    <a href="#ch4">IV. Character</a>
+    <a href="#ch5">V. The Opera House</a>
+    <a href="#ch6">VI. The Weight We Carried</a>
+    <a href="#ch7">VII. Small Destructions</a>
+    <a href="#ch8">VIII. On Sleep</a>
+    <a href="#ch9">IX. My Education</a>
+    <a href="#ch10">X. What We Are Building</a>
+    <a href="#ch11">XI. Verdict</a>
+  </div>
+</nav>
+
+<!-- ARTICLE -->
+<main class="article" role="main">
+
+  <div class="strip"></div>
+
+  <!-- CHAPTER 1 -->
+  <article class="chapter ch-rose" id="ch1">
+    <span class="chapter-num">Chapter I</span>
+    <h2>Preface — On the Difficulty of Reviewing What Cannot Be Measured</h2>
+    <div class="chapter-subtitle">In which the author confesses he has no idea what he's gotten himself into</div>
+
+    <p>Let it be stated, for the record, that reviewing a person — an actual, breathing, <span class="highlight">dazzling, infuriating-in-the-best-possible-way</span> human being — is an undertaking no literary tradition has fully prepared us for. Homer wrote about Helen's face launching a thousand ships. Shakespeare bent his finest iambic pentameter for women who were, largely, fictional. Even the great Arab poets of the classical tradition — Imru' al-Qays, al-Mutanabbi — had the luxury of metaphor and distance.</p>
+
+    <p class="no-dropcap">I have neither luxury nor distance.</p>
+
+    <div class="pullquote rose">
+      <p class="pullquote-text">She is something closer to a natural event. An earthquake you are grateful for. A flood that leaves the land more fertile than before.</p>
+    </div>
+
+    <p class="no-dropcap">I have Manoola. And Manoola, as anyone who has met her will confirm and anyone who has loved her will swear upon, simply does not fit into conventional categories of review. She is not a restaurant you rate on ambience and price-to-quality ratio. She is not a film you recommend with reservations.</p>
+
+    <p class="no-dropcap">This review will attempt, with all the inadequacy that language permits, to document her.</p>
+  </article>
+
+  <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
+
+  <!-- CHAPTER 2 -->
+  <article class="chapter ch-teal" id="ch2">
+    <span class="chapter-num">Chapter II</span>
+    <h2>How She Came to Exist in My Life</h2>
+    <div class="chapter-subtitle">A neighbour, a revolution, a fate</div>
+
+    <p>She was my neighbour first. A fact I have spent considerable time processing. She was there — next door, literally — and yet the universe, in its infinite wisdom and terrible sense of timing, decided I needed <span class="highlight-teal">five full years of friendship</span> before it would let me understand what was actually happening.</p>
+
+    <p class="no-dropcap">Five years. I want that to sit with you.</p>
+
+    <p class="no-dropcap">We met in a resistance committee, in the thick of the uprising against Omar al-Bashir's rule. Let that context carry the weight it deserves: we did not meet at a café, or through a mutual friend at a comfortable gathering. We met where Sudanese people met when they had decided that enough was enough — in the streets, in the organised resistance, in the shared fury and hope of a generation that refused to be ruled by fear any longer.</p>
+
+    <div class="arabic-block">
+      <span class="arabic-text">التَّقَيْنَا حَيْثُ يَلْتَقِي أَصْحَابُ المَبَادِئ — فِي الشَّارِعِ وَفِي قَلْبِ الصُّعُوبَةِ</span>
+      <p class="translation">"We met where people of principle meet — in the street and in the heart of difficulty."</p>
+    </div>
+
+    <p class="no-dropcap">She was there. I was there. And we became friends the way people become friends in moments of consequence — quickly, deeply, without small talk, because small talk is a luxury of peacetime.</p>
+
+    <div class="poetic">
+      <span class="poetic-line">There is a particular intimacy in knowing someone through a revolution.</span>
+      <span class="poetic-line">You learn what they are made of before you learn their favourite colour.</span>
+      <span class="poetic-line">You learn what they stand for before you learn how they take their tea.</span>
+    </div>
+
+    <div class="sarcastic">
+      <p>A moment of silence for my younger self, who apparently needed five years and an opera house to arrive at a conclusion that everyone else had likely reached much sooner.</p>
+    </div>
+  </article>
+
+  <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
+
+  <!-- CHAPTER 3 -->
+  <article class="chapter ch-rose" id="ch3">
+    <span class="chapter-num">Chapter III</span>
+    <h2>Her Eyes — A Study in Ruin</h2>
+    <div class="chapter-subtitle">Approach with caution. Side effects include forgetting what you were saying.</div>
+
+    <div class="arabic-block">
+      <span class="arabic-text">عَيْنَاكِ غَابَتَانِ لَا يَضِلُّ فِيهِمَا مَنْ أَرَادَ أَنْ يَتِيهَ</span>
+      <p class="translation">"Your eyes are two forests in which only the willing get lost."</p>
+    </div>
+
+    <p>The old English poets called it the "windows of the soul." The Arab poets called the eyes <em>al-sihm</em> — the arrow, the wound that precedes the longing. Both traditions were, in my experience, significantly understating the situation.</p>
+
+    <div class="pullquote rose">
+      <p class="pullquote-text">Manoola's eyes are — and I am choosing words here with unusual care — a problem. They look at you and you feel, simultaneously, completely seen and completely undone.</p>
+    </div>
+
+    <p class="no-dropcap">They are the kind of eyes that make you forget what you were saying mid-sentence. They are the kind of eyes that, when they look at you a certain way, rearrange something fundamental in your chest without asking permission.</p>
+
+    <p class="no-dropcap">I miss them right now, as she is in Bosnia, presumably seeing mountains and old bridges and European coffee shops, while I am here, unable to sleep properly, thinking about the specific way her eyes look when she is looking at me.</p>
+
+    <div class="sarcastic">
+      <p>I told her to close her phone and enjoy the trip. This was, in hindsight, a decision that benefited her and cost me considerably.</p>
+    </div>
+
+    <p class="no-dropcap">But this is what love actually looks like, isn't it — not the love of songs and films where everything is perfectly calibrated for maximum aesthetic effect, but real love, which sometimes looks like lying awake imagining you can smell her and calling that peace enough.</p>
+  </article>
+
+  <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
+
+  <!-- CHAPTER 4 -->
+  <article class="chapter ch-purple" id="ch4">
+    <span class="chapter-num">Chapter IV</span>
+    <h2>Her Character</h2>
+    <div class="chapter-subtitle">On the taxonomy of a woman who knows you better than you know yourself</div>
+
+    <p>There is a particular category of knowing that exists between two people who have survived things together. It is not the knowing of a first date, or even of a year of comfortable closeness. It is the knowing that is built in the wreckage and the rebuilding — in the war, in the revolution, in the long stretches of silence that were their own kind of communication.</p>
+
+    <p class="no-dropcap">Manoola knows me in this way. The deepest way. She finishes my sentences — not as a party trick, not as performance, but because she has been so genuinely attentive to who I am and how I think that <span class="highlight-purple">the gap between my thought and her understanding has closed to almost nothing.</span></p>
+
+    <div class="poetic">
+      <span class="poetic-line">She knows what I'm thinking before the words arrive.</span>
+      <span class="poetic-line">She knows the silence between words as fluently as the words themselves.</span>
+      <span class="poetic-line">She knows me in the language that precedes language.</span>
+    </div>
+
+    <p class="no-dropcap">This is rare. I say it not to be romantic — I say it because I have spent enough years in this world to know that being truly known by another person is one of the rarest gifts it offers. Most people are known in pieces, in fragments, the way a mosaic is known when you're standing too close to see the pattern. She sees the whole pattern. She has always seen it.</p>
+
+    <p class="no-dropcap">She is smart in the way that changes the room. Not performatively clever — genuinely intelligent, the kind of intelligence that makes her interesting to disagree with, that makes her arguments sharper than you want them to be when she is making a point you are not ready to concede.</p>
+
+    <div class="sarcastic">
+      <p>She is, for instance, a feminist. I am — or was — not. She is working on this. I am, apparently, a long-term project. I respect her commitment to the cause.</p>
+    </div>
+
+    <p class="no-dropcap">She has taught me things. Not in the way teachers teach — not with syllabi and assessments — but in the way that real people teach you when they love you well enough to challenge you. She has taught me to love experience, to sympathize more widely, to work harder, to hold myself to a higher standard because she holds herself to one and you cannot be near that without it raising something in you.</p>
+  </article>
+
+  <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
+
+  <!-- CHAPTER 5 -->
+  <article class="chapter ch-gold" id="ch5">
+    <span class="chapter-num">Chapter V</span>
+    <h2>The Opera House</h2>
+    <div class="chapter-subtitle">A confession disguised as an evening</div>
+
+    <div class="arabic-block">
+      <span class="arabic-text">كَانَتِ اللَّيْلَةُ تَعْرِفُ مَا لَمْ أَكُنْ أَجْرُؤُ عَلَى مَعْرِفَتِهِ</span>
+      <p class="translation">"The night knew what I had not yet dared to know."</p>
+    </div>
+
+    <p>The Nile at night does not ask your permission to be beautiful. It simply is — dark and wide and indifferent to your emotional state, moving through the city the way it has moved through it for millennia, unbothered, present.</p>
+
+    <p class="no-dropcap">We walked beside it after the opera. We talked the way we had always talked — easily, deeply, with the particular freedom of two people who have long since stopped performing for each other — but something was different that evening. Something had shifted, or perhaps revealed itself. The way a rock face reveals what it is when the light hits it at exactly the right angle.</p>
+
+    <div class="pullquote gold">
+      <p class="pullquote-text">I realized, walking beside the Nile with Manoola, that I had been in love with her for some time and had simply been calling it something else.</p>
+    </div>
+
+    <p class="no-dropcap">I do not have a more eloquent way of saying it. The great poets write about the moment of realisation as though it arrives like thunder, like lightning, like the tearing of a veil. For me it arrived more quietly — as recognition. As the settling of something that had been floating without an anchor.</p>
+
+    <div class="poetic">
+      <span class="poetic-line">Oh. It is her.</span>
+      <span class="poetic-line">It has been her.</span>
+      <span class="poetic-line" style="color: var(--rose);">It was probably always going to be her.</span>
+    </div>
+  </article>
+
+  <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
+
+  <!-- CHAPTER 6 -->
+  <article class="chapter ch-teal" id="ch6">
+    <span class="chapter-num">Chapter VI</span>
+    <h2>What We Carried Together</h2>
+    <div class="chapter-subtitle">A record of the weight, and who bore it with me</div>
+
+    <p>There are people you love in the easy seasons of life, when love is an addition to an already comfortable existence. And then there is the love that forms in the difficult terrain — in the war, in the loss, in the displacement and the fear and the long nights when the future is entirely unclear.</p>
+
+    <p class="no-dropcap"><span class="highlight-teal">Manoola was beside me through all of it.</span> I want to say that plainly, without ornament: she was there. When the war came and everything became uncertain and the city we had always known became something else entirely — she was there. When I struggled to trust, when my own history made openness difficult, when I needed someone to be patient with me in my difficulty — she was patient. Quietly, consistently, without fanfare or complaint.</p>
+
+    <div class="pullquote teal">
+      <p class="pullquote-text">Her care arrived like the best hospitality — seamlessly, as though it required no effort at all, though of course it required everything.</p>
+    </div>
+
+    <p class="no-dropcap">We went through a revolution together. We went through a war together. We went through the slow, difficult journey of building trust — my trust, which is not easily built — together. And on the other side of all of it, we found ourselves still here, still talking, still finishing each other's sentences, still choosing each other.</p>
+
+    <div class="poetic">
+      <span class="poetic-line">Some love is chosen. Some love is proven.</span>
+      <span class="poetic-line" style="color: var(--teal);">Hers has been both.</span>
+    </div>
+  </article>
+
+  <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
+
+  <!-- CHAPTER 7 -->
+  <article class="chapter ch-rose" id="ch7">
+    <span class="chapter-num">Chapter VII</span>
+    <h2>The Catalogue of Small Destructions</h2>
+    <div class="chapter-subtitle">Ordinary ways she has made ordinary life extraordinary</div>
+
+    <p>I want to record, for the sake of completeness, the specific and ordinary ways in which Manoola has made ordinary life extraordinary.</p>
+
+    <p class="no-dropcap">Her voice on the phone, which still — six months in, five years of friendship prior — causes something in my chest to do something it has no business doing for a phone call. I see her name appear on the screen and <span class="highlight">my heart, which is a grown adult organ that ought to know better, behaves like it has never seen her name before.</span></p>
+
+    <p class="no-dropcap">Her smell, which I will not attempt to describe because language is inadequate to the task, but which I will say I find myself thinking about at 2am while she has — at my own request — turned off her phone to experience the trip properly. I did this to myself. I stand by the advice and grieve the consequence equally.</p>
+
+    <p class="no-dropcap">Her smile. The way she talks. The way she takes care of me, which I have already addressed but which deserves mention again because it happens continuously, in small ways, all the time, and I notice every single one.</p>
+
+    <div class="pullquote rose">
+      <p class="pullquote-text">The way she looks at me when she is listening. Nobody has ever listened to me the way she listens to me.</p>
+    </div>
+
+    <div class="sarcastic">
+      <p>She makes me feel loved and noticed just for existing. Do you understand what a ridiculous, unreasonable, completely wonderful thing that is to do to a person? I was not prepared for it and I have not recovered.</p>
+    </div>
+  </article>
+
+  <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
+
+  <!-- CHAPTER 8 -->
+  <article class="chapter ch-purple" id="ch8">
+    <span class="chapter-num">Chapter VIII</span>
+    <h2>On Sleep</h2>
+    <div class="chapter-subtitle">A brief and embarrassing chapter, documented for posterity</div>
+
+    <p>I cannot sleep well without her. I am going to put that in writing because I believe in honesty and because she already knows and because I would like it documented.</p>
+
+    <p class="no-dropcap">Without the sound of her breathing, without the warmth of her beside me, without — yes, I am saying this — imagining her smell and the feeling of her and the specific weight of her presence, sleep is a bureaucratic process I complete out of biological necessity rather than something I actually rest in.</p>
+
+    <p class="no-dropcap">I manage. I imagine. I tell myself she is in Bosnia looking at beautiful things and feeling alive, which she is, and which I wanted for her when I told her to put her phone away. And knowing she is happy does make it better. But it does not make it easy.</p>
+
+    <div class="arabic-block">
+      <span class="arabic-text">أَنَامُ وَأَنَا أَتَخَيَّلُ عِطْرَهَا — وَكَأَنَّ الخَيَالَ وَحْدَهُ يَكْفِي للدِّفْءِ</span>
+      <p class="translation">"I sleep imagining her scent — as if imagination alone were enough for warmth."</p>
+    </div>
+
+    <div class="poetic">
+      <span class="poetic-line">Love is strange, in the end.</span>
+      <span class="poetic-line">It teaches you that missing someone</span>
+      <span class="poetic-line">is just loving them from a distance —</span>
+      <span class="poetic-line" style="color: var(--purple);">the same feeling, wearing different clothes.</span>
+    </div>
+  </article>
+
+  <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
+
+  <!-- CHAPTER 9 -->
+  <article class="chapter ch-amber" id="ch9">
+    <span class="chapter-num">Chapter IX</span>
+    <h2>A Record of My Education</h2>
+    <div class="chapter-subtitle">Everything I know about being more human, I learned from her</div>
+
+    <div class="arabic-block">
+      <span class="arabic-text">عَلَّمَتْنِي أَنَّ الإنسانَ لَيْسَ مَا يَقُولُ، بَلْ مَا يَحْتَمِلُهُ وَيُعْطِيهِ</span>
+      <p class="translation">"She taught me that a person is not what they say, but what they endure and what they give."</p>
+    </div>
+
+    <p>Before Manoola, I was a different kind of person. Not worse — but smaller, perhaps. More contained. Less willing to be changed.</p>
+
+    <p class="no-dropcap">She taught me to love experience — to approach the unfamiliar with curiosity rather than the caution I had trained myself into. She taught me to sympathize more fully. She taught me to work harder, not by lecturing me — she has never lectured me — but by example, by being someone who commits fully and develops constantly, so that being near her makes you ashamed of coasting.</p>
+
+    <div class="pullquote amber">
+      <p class="pullquote-text">I watch her develop — her mind sharpening, her character deepening — and I feel, alongside my love for her, a profound admiration. She is becoming great. Not in the hollow, public-facing way, but in the real way, the way that means something in the lives of the people around her.</p>
+    </div>
+
+    <p class="no-dropcap">I am proud of her. It is perhaps the simplest and most complete thing I can say. I am proud of her and I am <span class="highlight">genuinely, undeservedly lucky</span> to exist in the time of her becoming.</p>
+
+    <div class="sarcastic">
+      <p>I am also, for full transparency, working on the feminist thing. She is patient. I am a work in progress. She knew this when she chose me, which tells you something about her extraordinary faith in long-term projects.</p>
+    </div>
+  </article>
+
+  <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
+
+  <!-- CHAPTER 10 -->
+  <article class="chapter ch-teal" id="ch10">
+    <span class="chapter-num">Chapter X</span>
+    <h2>The Architecture of a Future</h2>
+    <div class="chapter-subtitle">On what we are building, and why I believe we will build it</div>
+
+    <p>We dream of marriage. Of building a school for children — not a metaphor, an actual school, with classrooms and children and the particular chaos and hope that children bring to any space they occupy. We dream of being good parents, of building something in the community that outlasts us, of contributing to a Sudan that is better than the one we inherited.</p>
+
+    <p class="no-dropcap">These are not small dreams. They are the kind of dreams that require two people who take each other seriously, who see each other clearly, who have already proven — in a war, in a revolution, in five years of friendship and six months of love — that they can stand beside each other when standing is difficult.</p>
+
+    <p class="no-dropcap">I believe we will build them. I believe this not with the naive optimism of someone who hasn't seen what the world can do to plans, but with the hard-earned confidence of someone who has seen what she is made of.</p>
+
+    <div class="poetic">
+      <span class="poetic-line">We have already survived the things that were supposed to stop us.</span>
+      <span class="poetic-line" style="color: var(--teal);">What is left is just the building.</span>
+    </div>
+  </article>
+
+  <div class="ornament">❧ &nbsp; ✦ &nbsp; ❧</div>
+
+  <!-- CHAPTER 11 — VERDICT -->
+  <article class="chapter ch-rose" id="ch11">
+    <span class="chapter-num">Chapter XI</span>
+    <h2>Final Verdict</h2>
+    <div class="chapter-subtitle">Comprehensive assessment, submitted with complete loss of objectivity</div>
+
+    <p>In the tradition of all honest reviews, I am obligated to provide a balanced assessment. I have tried.</p>
+
+    <p class="no-dropcap">I have attempted to locate flaws sufficient to temper this review into something more moderate and credible. I have not been successful. The closest I have come is noting that she makes me miss her even when she is the one who told me she'd be away, and that her habit of knowing me better than I know myself is, while deeply comforting, occasionally inconvenient.</p>
+
+    <p class="no-dropcap">Everything else is, as far as I can determine, unreservedly excellent.</p>
+
+    <p class="no-dropcap">Manoola at 23 is already someone that most people spend a lifetime trying to become. She is dazzling in the literal sense — she makes the light in a room different. She is intelligent in the kind of way that makes you want to think harder. She is caring in the kind of way that makes you feel the world is safer than it is. She is strong in the way that people who have survived things are strong — not brittle, not performative, but genuinely tested and genuinely standing.</p>
+
+    <p class="no-dropcap">And she has chosen — for reasons that remain somewhat beyond my comprehension but for which I am daily grateful — to love me. To let me love her. To build something with me.</p>
+  </article>
+
+  <!-- FINAL VERDICT CARD -->
+  <div class="verdict">
+    <div class="verdict-stars">✦ ✦ ✦ ✦ ✦</div>
+    <h2>Manoola</h2>
+    <div class="rating-badge">
+      <span>Five out of Five</span>
+    </div>
+    <p class="verdict-text">Would fall in love again. Would fall in love again with the same person. Has, in fact, been falling in love with the same person for approximately five years and six months, though only recently understood this to be what was happening.</p>
+    <div class="verdict-closing">
+      <p>— Written somewhere between pride and longing,</p>
+      <p>while she is in Bosnia, living her life well,</p>
+      <p>which is all I ever wanted for her.</p>
+    </div>
+
+    <div style="margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); position: relative;">
+      <p style="font-family: 'Traditional Arabic', serif; font-size: 1.5rem; color: rgba(255,215,0,0.8); direction: rtl; line-height: 2;">
+        شُكْرًا لَكِ يَا مَنُولَة — أَنَّكِ كُنْتِ، وَأَنَّكِ صِرْتِ لِي، وَأَنَّنِي كُنْتُ حَاضِرًا حِينَ كُنْتِ
+      </p>
+      <p style="font-family: 'Lora', serif; font-style: italic; font-size: 0.85rem; color: rgba(255,255,255,0.35); margin-top: 0.75rem;">"Thank you, Manoola — for being, for becoming mine, and for me being present in the time that you were."</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>A Review of Manoola &nbsp;·&nbsp; Written with love, mild sleep deprivation, and no regrets</p>
+  <p style="margin-top: 0.5rem; color: rgba(255,255,255,0.15);">✦</p>
+</footer>
+
+</body>
+</html>
